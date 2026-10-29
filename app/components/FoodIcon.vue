@@ -222,12 +222,15 @@ defineProps<{ kind: IconKind; tint?: string }>()
     </g>
 
     <g v-else-if="kind === 'builder'">
-      <path d="M11 22c0-9 9-14 21-14s21 5 21 14z" fill="#f5a83f" />
-      <ellipse cx="26" cy="14" rx="1.8" ry="1.1" fill="#fff4d6" />
-      <ellipse cx="36" cy="16" rx="1.8" ry="1.1" fill="#fff4d6" />
-      <path d="M10 28q3-3 6 0t6 0 6 0 6 0 6 0 6 0 6 0 2 0v3H10z" fill="#7cc84a" />
-      <rect x="11" y="35" width="42" height="8" rx="4" fill="#7a4128" />
-      <path d="M12 47h40v2a6 6 0 0 1-6 6H18a6 6 0 0 1-6-6z" fill="#e8963a" />
+      <path d="M11 27c0-9 9-14 21-14s21 5 21 14z" fill="#f5a83f" />
+      <ellipse cx="26" cy="19" rx="1.8" ry="1.1" fill="#fff4d6" />
+      <ellipse cx="36" cy="21" rx="1.8" ry="1.1" fill="#fff4d6" />
+      <rect x="12" y="27" width="40" height="7" rx="3.5" fill="#e8483b" />
+      <ellipse cx="23" cy="30.5" rx="5" ry="1.4" fill="#ff8a7d" />
+      <ellipse cx="41" cy="30.5" rx="5" ry="1.4" fill="#ff8a7d" />
+      <rect x="11" y="33" width="42" height="9" rx="4.5" fill="#7a4128" />
+      <path d="M12 33h40l-4 5-4-3-4 4-4-4-4 4-4-4-4 4-4-4-4 3z" fill="#ffcf2e" />
+      <path d="M12 42h40v3a6 6 0 0 1-6 6H18a6 6 0 0 1-6-6z" fill="#e8963a" />
       <path d="M53 3l2 5 5 2-5 2-2 5-2-5-5-2 5-2z" fill="#34bedb" />
     </g>
 

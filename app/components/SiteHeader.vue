@@ -118,7 +118,7 @@ function closeMobile() {
   align-items: center;
   gap: clamp(16px, 4vw, 40px);
   height: var(--header-height);
-  padding: 0 clamp(20px, 5vw, 56px);
+  padding: 0 clamp(20px, 3.5vw, 56px);
 }
 
 .logo {
@@ -133,12 +133,12 @@ function closeMobile() {
 .nav {
   display: flex;
   align-items: center;
-  gap: clamp(18px, 3vw, 36px);
+  gap: clamp(18px, 2vw, 36px);
 }
 
 .nav--desktop {
   flex: 1;
-  margin-left: clamp(8px, 3vw, 32px);
+  margin-left: clamp(8px, 1vw, 32px);
 }
 
 .nav__link {
@@ -265,12 +265,9 @@ function closeMobile() {
   display: none;
 }
 
-@media (max-width: 860px) {
+/* Eight category links plus the actions need about 1270px: below that, they move into the burger menu. */
+@media (max-width: 1280px) {
   .nav--desktop {
-    display: none;
-  }
-
-  .icon-btn--desktop {
     display: none;
   }
 
@@ -296,6 +293,12 @@ function closeMobile() {
   }
 
   .nav--mobile .nav__link::after {
+    display: none;
+  }
+}
+
+@media (max-width: 860px) {
+  .icon-btn--desktop {
     display: none;
   }
 }

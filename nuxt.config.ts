@@ -9,7 +9,7 @@ export default defineNuxtConfig({
     head: {
       htmlAttrs: { lang: 'fr' },
       meta: [
-        { name: 'description', content: 'Miamo, un fast-food imaginaire présenté comme un vrai site de commande en ligne.' },
+        { name: 'description', content: 'Miamo, un fast-food fictif présenté comme un vrai site de commande en ligne.' },
         { name: 'theme-color', content: '#d62300' },
       ],
       link: [

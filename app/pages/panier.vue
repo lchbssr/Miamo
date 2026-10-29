@@ -59,9 +59,24 @@ function choosePaymentMethod(next: PaymentMethod) {
   play('select')
 }
 
-function formatCardNumber() {
-  const digits = cardDigits.value.slice(0, 16)
-  cardNumber.value = digits.replace(/(.{4})/g, '$1 ').trim()
+// Writes the formatted text back into the input too: when a typed letter is stripped, the model value doesn't
+// change, so Vue wouldn't re-render the field and the letter would stay on screen.
+function formatInput(event: Event, max: number, format: (digits: string) => string) {
+  const input = event.target as HTMLInputElement
+  input.value = format(input.value.replace(/\D/g, '').slice(0, max))
+  return input.value
+}
+
+function formatCardNumber(event: Event) {
+  cardNumber.value = formatInput(event, 16, (digits) => digits.replace(/(.{4})/g, '$1 ').trim())
+}
+
+function formatCardExpiry(event: Event) {
+  cardExpiry.value = formatInput(event, 4, (digits) => (digits.length > 2 ? `${digits.slice(0, 2)}/${digits.slice(2)}` : digits))
+}
+
+function formatCardCvc(event: Event) {
+  cardCvc.value = formatInput(event, 3, (digits) => digits)
 }
 
 function applyPromo() {
@@ -128,7 +143,7 @@ function pay() {
           dans environ {{ placed.minutes }} minutes.
         </p>
         <p class="done__points">+{{ placed.earned }} points fidélité gagnés</p>
-        <p class="done__note">Miamo est un restaurant imaginaire : rien ne sera vraiment cuisiné, dommage.</p>
+        <p class="done__note">Miamo est un restaurant fictif : rien ne sera vraiment cuisiné, dommage.</p>
         <NuxtLink to="/" class="pill pill--accent" @click="play('back')">Retour au menu</NuxtLink>
       </section>
 
@@ -169,16 +184,16 @@ function pay() {
         <div v-if="paymentMethod === 'carte'" class="card-fields">
           <label class="card-field">
             Numéro de carte
-            <input v-model="cardNumber" inputmode="numeric" placeholder="1234 5678 9012 3456" maxlength="19" @input="formatCardNumber" />
+            <input :value="cardNumber" inputmode="numeric" placeholder="1234 5678 9012 3456" @input="formatCardNumber" />
           </label>
           <div class="card-fields__row">
             <label class="card-field">
               Expiration
-              <input v-model="cardExpiry" placeholder="MM/AA" maxlength="5" />
+              <input :value="cardExpiry" inputmode="numeric" placeholder="MM/AA" @input="formatCardExpiry" />
             </label>
             <label class="card-field">
               CVC
-              <input v-model="cardCvc" inputmode="numeric" placeholder="123" maxlength="3" />
+              <input :value="cardCvc" inputmode="numeric" placeholder="123" @input="formatCardCvc" />
             </label>
           </div>
         </div>
@@ -344,8 +359,9 @@ function pay() {
 
 .payment {
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
   gap: 16px;
-  max-width: 440px;
+  max-width: 480px;
   margin: 0 auto;
   padding: 28px;
 }
@@ -401,7 +417,7 @@ function pay() {
 
 .card-fields__row {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 12px;
 }
 
@@ -414,6 +430,8 @@ function pay() {
 }
 
 .card-field input {
+  width: 100%;
+  min-width: 0;
   height: 46px;
   padding: 0 14px;
   border: 1px solid var(--line);
@@ -432,11 +450,14 @@ function pay() {
 
 .payment__actions {
   display: flex;
+  flex-wrap: wrap;
   gap: 10px;
 }
 
 .payment__actions .pill {
-  flex: 1;
+  flex: 1 1 180px;
+  padding: 0 18px;
+  white-space: nowrap;
 }
 
 .payment__disclaimer {

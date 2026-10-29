@@ -27,7 +27,7 @@ const bestsellers = picks
     <section class="hero">
       <div class="hero__inner">
         <div class="hero__text">
-          <p class="hero__eyebrow">Fast-food imaginaire</p>
+          <p class="hero__eyebrow">Miamo</p>
           <h1>Des burgers généreux, prêts en quelques minutes.</h1>
           <p class="hero__lead">
             Pain brioché, steak grillé sur place et sauce maison. Commande en ligne, sur place ou à emporter.

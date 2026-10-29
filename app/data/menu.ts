@@ -68,7 +68,7 @@ export const channels: Channel[] = [
     tagline: 'Des pains briochés, du fromage qui coule et beaucoup d’amour.',
     highlights: ['Pain brioché du jour', 'Steak haché sur place', 'Option végé'],
     icon: 'burger',
-    colors: ['#ffb057', '#ff7a45'],
+    colors: ['#f2553a', '#c21f00'],
     to: '/chaine/burgers',
     products: [
       { id: 'classique', name: 'Le Classique', description: 'Steak, cheddar, salade, tomate et sauce Miamo.', price: 650, icon: 'burger-classic', tags: ['gluten', 'lait'] },
