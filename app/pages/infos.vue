@@ -49,7 +49,6 @@ const todayRow = today < 4 ? 0 : today < 6 ? 1 : 2
         <p>
           Miamo est un fast-food imaginaire, créé pour s’amuser avec Nuxt et un vrai site de commande en ligne.
         </p>
-        <p class="muted">Les illustrations, les sons et la musique sont faits maison, en code.</p>
       </section>
     </div>
   </div>
