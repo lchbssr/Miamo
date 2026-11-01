@@ -7,7 +7,7 @@ const year = new Date().getFullYear()
     <div class="footer__top">
       <div class="footer__brand">
         <p class="footer__logo">Miamo</p>
-        <p>Un fast-food fictif, pensé et codé pour le plaisir.</p>
+        <p>Un fast-food fictif, un petit projet personnel.</p>
       </div>
 
       <div class="footer__col">
